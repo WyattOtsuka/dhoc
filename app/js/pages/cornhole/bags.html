@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>DHOC Home</title>
+<link rel="icon" type = "image/x-icon" href="http://localhost:3100/favicon.ico" />
+
+<head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://localhost:3100/css/prod.css">
+</head>
+
+<body> 
+    <div id = "navbar" class="navbar sticky">
+        <a href="/">Home</a>
+        <a href="/sets">Furniture Sets</a>
+        <div class="dropdown">
+            <button onclick="location.href='/chairs'" class="dropbtn">Chairs 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/chairs/adirondacks-v.html">Adirondacks (Vertical Slats)</a>
+                <a href="/chairs/adirondacks-h.html">Adirondacks (Horizantal Slats)</a>
+                <a href="/chairs/love-seat.html">Love Seats</a>
+            </div>
+        </div> 
+        <div class="dropdown">
+            <button onclick="location.href='/cornhole'" class="dropbtn">Cornhole
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href= "/cornhole/boards.html">Boards</a>
+                <a class = "curr-page">Bags</a>
+                <a href= "/cornhole/sets.html">Sets</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="location.href='/tables'" class="dropbtn">Tables
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="/tables/small.html">Small</a>
+                <a href="/tables/medium.html">Medium</a>
+            </div>
+        </div>
+    </div>
+
+    <div> 
+        <p class = "page-head">Cornhole Bags</p>
+    </div>
+
+    <div class="images">
+        <div class = "slideshow-container">
+            <div class="mySlides">
+                <img class="img" src="../img/chairs/ad-vert/mid-brown-frontview.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <img class="img" src="../img/chairs/ad-vert/mid-brown-sideview.jpg" style="width:100%">
+            </div>
+
+            <div class="mySlides">
+                <img class="img" src="../img/chairs/ad-vert/mid-brown-sideview2.jpg" style="width:100%">
+            </div>
+            
+            <div class="mySlides">
+                <img class="img" src="../img/chairs/ad-vert/double-white-frontview.jpg" style="width:100%">
+            </div>
+            
+            <div class="mySlides">
+                <img class="img" src="../img/chairs/ad-vert/double-white-sideview.jpg" style="width:100%">
+            </div>
+            
+            <div class="mySlides">
+                <img class="img" src="../img/chairs/ad-vert/sandlewood-frontview.jpg" style="width:100%">
+            </div>
+            
+            <a class="prev" onclick="newSlide('right')">&#10094;</a> 
+            <a class="next" onclick="newSlide('left')">&#10095;</a> 
+        </div>
+        <!-- The dots/circles -->
+        <div style="text-align:center">
+            <span class="dot active" onclick="dot(0)"></span>
+            <span class="dot not-active" onclick="dot(1)"></span>
+            <span class="dot not-active" onclick="dot(2)"></span>
+            <span class="dot not-active" onclick="dot(3)"></span>
+            <span class="dot not-active" onclick="dot(4)"></span>
+            <span class="dot not-active" onclick="dot(5)"></span>
+            
+        </div>
+        <div>
+            <p class = "cap">color</p>
+        </div> 
+    </div>
+     
+    <div class = "desc"> 
+        <p>
+            Smooth, hard, wood chairs.
+        </p>
+    </div>
+
+
+    <script>
+        var slideIndex = 0;
+        //showSlides(slideIndex);
+        initSlides(0)
+
+        //adds new slide removes old slide
+        function addOutIn(direction, inIdx, outIdx) {
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (direction == "Right") {
+                slides[outIdx].classList.add("slideOutRight")
+                slides[inIdx].classList.add("slideInRight")
+
+            } else {
+                slides[outIdx].classList.add("slideOutLeft")
+                slides[inIdx].classList.add("slideInLeft")
+
+            }
+            slides[inIdx].style.display = "block"
+
+            dots[inIdx].className = dots[inIdx].className.replace(" not-active", " active");
+            dots[outIdx].className = dots[outIdx].className.replace(" active", " not-active");
+            removeOutIn(direction, outIdx, inIdx)
+            
+
+        }
+
+        //removes animation class
+        function removeOutIn (direction, outIdx, inIdx){
+            var slides = document.getElementsByClassName("mySlides");
+
+            slides[inIdx].addEventListener("webkitAnimationEnd", function() {
+                slides[inIdx].classList.remove("slideIn" + direction)
+                
+            }, { once: true });
+            slides[outIdx].addEventListener("webkitAnimationEnd", function() {
+                slides[outIdx].classList.remove("slideOut" + direction);
+                slides[outIdx].style.display = "none"
+            }, { once: true });
+        }
+
+        //creates new indexes
+        function newSlide(direction) {
+            var slides = document.getElementsByClassName("mySlides");
+
+            console.log(slides)
+
+            if (direction == "right") {
+                outIdx = slideIndex
+                if(slideIndex == 0) {
+                    slideIndex = slides.length-1;
+                } else {
+                    slideIndex--;
+                }
+                addOutIn("Right", slideIndex, outIdx)
+            } else if (direction == "left") {
+                outIdx = slideIndex
+
+                if(slideIndex >= slides.length-1) {
+                    
+                    slideIndex = 0;
+                } else {
+                    slideIndex++;
+                }
+                addOutIn("Left", slideIndex, outIdx)
+
+            } else {
+                //log errors
+            }
+        }
+
+        function dot(idx) {
+            if (idx != slideIndex){
+                var direction = ""
+                var slides = document.getElementsByClassName("mySlides");
+                if (slideIndex > idx) {
+                    if (slideIndex - idx-2 < (slides.length - 1) - slideIndex + idx) {
+                        direction = "Right"
+                    } else {
+                        direction = "Left"
+                    }
+                } else {
+                    if (idx - slideIndex-   2 < (slides.length - 1) + slideIndex - idx) {
+                        direction = "Left"
+                    } else {
+                        direction = "Right"
+                        
+                    }
+                }
+                addOutIn(direction, idx, slideIndex)
+                slideIndex = idx
+            }
+        }
+
+        function initSlides(n) {
+            var slides = document.getElementsByClassName("mySlides");
+            slides[n].style.display = "block"
+            for (i = 0; i < slides.length; i++){
+                if(i != n) {
+                    slides[i].style.display = "none"
+                }
+            }
+        }
+
+    
+    </script>
+
+</body>
+
+</html>

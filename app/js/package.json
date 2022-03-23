@@ -1,0 +1,16 @@
+{
+  "name": "dhoc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server.js localhost 8080"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express-rate-limit": "^5.1.3",
+    "morgan": "^1.10.0"
+  }
+}

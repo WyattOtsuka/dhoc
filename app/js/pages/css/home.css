@@ -1,0 +1,241 @@
+body {
+    margin: 0;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home {
+    max-width: 45em;
+    margin: auto;
+    align-self: center;
+}
+
+
+/* navbar and dropdown */
+
+.navbar {
+    background-color: #333;
+    min-height: 48px;
+    z-index: 500;
+}
+
+.navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+    float: left;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    position: static;
+    align-content: center;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+    background-color: blue;
+}
+
+.dropdown-content {
+    display: none;
+    position: relative;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    min-width: 97px;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 8px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid darkgray;
+    white-space: nowrap;
+    width: auto;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+    display: block;
+    margin-top: 1px;
+    position: absolute;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-height: 32px;
+}
+
+
+/*  slideshow  */
+
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    width: auto;
+    margin-top: 250px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev,
+.next {
+    background-color: rgba(177, 177, 177, 0.8);
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.active,
+.dot:hover {
+    background-color: #717171;
+}
+
+.not-active {
+    background-color: #bbb;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.img {
+    object-fit: contain !important;
+    align-self: center;
+    max-height: 100%;
+    min-width: 100%;
+    height: 100%;
+    margin-top: 48px;
+}
+
+
+/* Slideshow container */
+
+.slideshow-container {
+    padding-top: 48px;
+    min-width: 45em;
+    height: 600px;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    align-items: center;
+}
+
+.mySlides {
+    width: 45em;
+    height: 100%;
+    padding: 0px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    align-self: center;
+}
+
+.slideOutRight {
+    position: absolute;
+    top: 0px;
+    animation: slideOutRight 0.15s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideOutRight {
+    100% {
+        left: 45em;
+    }
+}
+
+.slideOutLeft {
+    position: absolute;
+    top: 0px;
+    animation: slideOutLeft 0.15s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideOutLeft {
+    100% {
+        left: -45em;
+    }
+}
+
+.slideInRight {
+    position: absolute;
+    top: 0px;
+    animation: slideInRight 0.15s;
+    animation-fill-mode: forwards;
+    left: -100px;
+}
+
+@keyframes slideInRight {
+    0% {
+        left: -1000px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+
+.slideInLeft {
+    position: absolute;
+    top: 0px;
+    left: 1000px;
+    animation: slideInLeft 0.15s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideInLeft {
+    100% {
+        left: 0px;
+    }
+}
